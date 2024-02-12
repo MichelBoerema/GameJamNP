@@ -279,6 +279,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1972162250}
   Actife: 0
+  onActivation:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeactivation:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &475539409
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -309,7 +315,7 @@ Transform:
   m_GameObject: {fileID: 475539407}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.65, y: 0.355, z: -2.46}
+  m_LocalPosition: {x: -0.663, y: 0.355, z: -2.489}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
