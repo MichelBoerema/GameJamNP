@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -19,7 +20,9 @@ public class FPSController : MonoBehaviour
     public float crouchSpeed = 3.5f;
     public bool IsCrouching = false;
     public float CrouchJumpSpeed = 5.0f;
-
+    public int Health;
+    public TextMeshProUGUI text;
+    public bool TakingDamage;
 
     CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
@@ -31,7 +34,6 @@ public class FPSController : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-
         // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -39,7 +41,8 @@ public class FPSController : MonoBehaviour
 
     void Update()
     {
-        if(!IsCrouching) //Is currenly NOT crouching
+        text.SetText(Health.ToString());
+        if (!IsCrouching) //Is currenly NOT crouching
         {
             Vector3 forward = transform.TransformDirection(Vector3.forward);
             Vector3 right = transform.TransformDirection(Vector3.right);
@@ -120,4 +123,43 @@ public class FPSController : MonoBehaviour
           
         
     }
+    IEnumerator CallFunctionRepeatedly()
+    {
+        while (TakingDamage)
+        {
+            TakeDamage(10);
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
+    public void TakeDamage(int damageAmmount)
+    {
+        if(Health > 0)
+        {
+            Health -= damageAmmount;
+        }
+    }
+
+    public void GainHealth(int healthAmmount)
+    {
+        Health += healthAmmount;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Damage"))
+        {
+            TakingDamage = true;
+            StartCoroutine(CallFunctionRepeatedly());
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Damage"))
+        {
+            TakingDamage = false;
+        }
+    }
 }
+
