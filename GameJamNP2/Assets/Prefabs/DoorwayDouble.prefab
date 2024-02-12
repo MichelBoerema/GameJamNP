@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 7156103894087877671}
   - component: {fileID: 5006579063346125904}
   - component: {fileID: 5567491035499565802}
-  - component: {fileID: 899128109845444672}
+  - component: {fileID: 2233203308297247665}
   m_Layer: 0
   m_Name: Gates
   m_TagString: Untagged
@@ -245,7 +245,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &899128109845444672
+--- !u!114 &2233203308297247665
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
