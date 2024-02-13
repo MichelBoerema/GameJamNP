@@ -21,14 +21,24 @@ public class WeightButton : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-
+        objects.Remove(other.gameObject);
+    }
+    private void Update()
+    {
+        if(objects.Count > 0)
+        {
+            animator.SetBool("Active", true);
+            Actife = true;
+            // Invoke the UnityEvent for activation
+            onActivation.Invoke();
+        }
+        else
+        {
+            animator.SetBool("Active", false);
+            Actife = false;
+            // Invoke the UnityEvent for deactivation
+            onDeactivation.Invoke();
+        }
     }
 }
-animator.SetBool("Active", true);
-Actife = true;
-// Invoke the UnityEvent for activation
-onActivation.Invoke();
-animator.SetBool("Active", false);
-Actife = false;
-// Invoke the UnityEvent for deactivation
-onDeactivation.Invoke();
+
