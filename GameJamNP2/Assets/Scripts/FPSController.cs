@@ -42,7 +42,7 @@ public class FPSController : MonoBehaviour
     void Update()
     {
         text.SetText(Health.ToString());
-        if (!IsCrouching) //Is currently NOT crouching
+        if (!IsCrouching) //Is currenly NOT crouching
         {
             Vector3 forward = transform.TransformDirection(Vector3.forward);
             Vector3 right = transform.TransformDirection(Vector3.right);
@@ -51,8 +51,8 @@ public class FPSController : MonoBehaviour
             float curSpeedY = canMove ? (isRunning ? runningSpeed : walkingSpeed) * Input.GetAxis("Horizontal") : 0;
             float movementDirectionY = moveDirection.y;
             moveDirection = (forward * curSpeedX) + (right * curSpeedY);
-
-            if (Input.GetButton("Jump") && canMove && characterController.isGrounded && !OnBox())
+        
+            if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
             {
                 moveDirection.y = jumpSpeed;
             }
@@ -63,8 +63,10 @@ public class FPSController : MonoBehaviour
             this.GetComponent<CapsuleCollider>().height = 1;
             characterController.height = 2f;
             this.GetComponentInChildren<Transform>().localScale = new Vector3(1, 1, 1);
-        }
-        else   //IS currently crouching
+           // Debug.Log(this.transform.position);
+            //this.transform.position = new Vector3(10,10,10);
+            //Debug.Log(this.transform.position);
+        }else   //IS currenly crouching
         {
             Vector3 forward = transform.TransformDirection(Vector3.forward);
             Vector3 right = transform.TransformDirection(Vector3.right);
@@ -83,18 +85,21 @@ public class FPSController : MonoBehaviour
             }
 
             this.GetComponent<CapsuleCollider>().height = crouchHeight;
-            characterController.height = crouchHeight * 2;
+            characterController.height = crouchHeight*2;
             this.GetComponentInChildren<Transform>().localScale = new Vector3(1, crouchHeight, 1);
         }
 
-        if (Input.GetKeyDown(KeyCode.C)) //Crouch Controller
+
+        if(Input.GetKeyDown(KeyCode.C)) //Crouch Controller
         {
-            IsCrouching = true;
+            //PlayerHeight.height = crouchHeight;
+            IsCrouching =  true;
         }
-        if (Input.GetKeyUp(KeyCode.C))
+        if(Input.GetKeyUp(KeyCode.C)) 
         {
+            //PlayerHeight.height = normalHeight;
             IsCrouching = false;
-        }
+        } 
 
         // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
         // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
@@ -115,21 +120,9 @@ public class FPSController : MonoBehaviour
             playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
         }
+          
+        
     }
-
-  public bool OnBox()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, characterController.height / 2 + 0.1f))
-        {
-            if (hit.collider.CompareTag("Box"))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
     IEnumerator CallFunctionRepeatedly()
     {
         while (TakingDamage)
@@ -139,17 +132,17 @@ public class FPSController : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damageAmount)
+    public void TakeDamage(int damageAmmount)
     {
-        if (Health > 0)
+        if(Health > 0)
         {
-            Health -= damageAmount;
+            Health -= damageAmmount;
         }
     }
 
-    public void GainHealth(int healthAmount)
+    public void GainHealth(int healthAmmount)
     {
-        Health += healthAmount;
+        Health += healthAmmount;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -169,3 +162,4 @@ public class FPSController : MonoBehaviour
         }
     }
 }
+

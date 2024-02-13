@@ -125,6 +125,8 @@ GameObject:
   - component: {fileID: 3354565066777992898}
   - component: {fileID: 3354565066777992899}
   - component: {fileID: 3354565066777992924}
+  - component: {fileID: 3517839040398822282}
+  - component: {fileID: 3882866173039592089}
   - component: {fileID: 3354565066777992897}
   - component: {fileID: 3354565066777992896}
   m_Layer: 0
@@ -195,7 +197,7 @@ MonoBehaviour:
   gravity: 20
   playerCamera: {fileID: 3354565067657047268}
   lookSpeed: 2
-  lookXLimit: 90
+  lookXLimit: 45
   normalHeight: 0
   crouchHeight: 0
   crouchSpeed: 3.5
@@ -205,6 +207,32 @@ MonoBehaviour:
   text: {fileID: 0}
   TakingDamage: 0
   canMove: 1
+--- !u!114 &3517839040398822282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3354565066777992925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dab46991ca9c5a4fa9b08ddabf31ff9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  box: {fileID: 0}
+  boxLocation: {fileID: 510416234814355836}
+--- !u!114 &3882866173039592089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3354565066777992925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f10e580f0dce5874e9c9ff8ca9847d7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &3354565066777992897
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -267,7 +295,6 @@ GameObject:
   - component: {fileID: 3354565067657047268}
   - component: {fileID: 3354565067657047269}
   - component: {fileID: 3852250376290829367}
-  - component: {fileID: 1975829085672134743}
   m_Layer: 0
   m_Name: playerCamera
   m_TagString: MainCamera
@@ -394,21 +421,3 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!114 &1975829085672134743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3354565067657047271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dab46991ca9c5a4fa9b08ddabf31ff9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 3354565067657047268}
-  originalDistance: 0
-  smoothSpeed: 5
-  scrollSensitivity: 1
-  rotationSpeed: 50
-  isThrowing: 0

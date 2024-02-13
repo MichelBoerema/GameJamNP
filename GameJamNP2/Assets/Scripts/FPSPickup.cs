@@ -10,7 +10,6 @@ public class FPSPickup : MonoBehaviour
     public float scrollSensitivity = 1.0f; // Adjust this to control scroll sensitivity.
     public float rotationSpeed = 10.0f; // Adjust this to control the rotation speed.
     public bool isThrowing = false; // Flag to track if the object is in throw state.
-    public FPSController controller;
 
     void Update()
     {
@@ -51,28 +50,27 @@ public class FPSPickup : MonoBehaviour
             heldObject.transform.position = Vector3.SmoothDamp(heldObject.transform.position, targetPosition, ref smoothVelocity, 1.0f / smoothSpeed);
         }
 
-        if (!controller.OnBox())
-        {        // Scroll to change the distance from camera to object.
-            float scrollInput = Input.GetAxis("Mouse ScrollWheel");
-            if (scrollInput != 0 && heldObject != null)
-            {
-                originalDistance += scrollInput * scrollSensitivity;
-            }
-            // Rotate the held object with Q and E keys.
-            if (heldObject != null)
-            {
-                float rotationInput = Input.GetAxis("Rotation");
-                heldObject.transform.Rotate(Vector3.forward, rotationInput * rotationSpeed * Time.deltaTime);
-            }
+        // Scroll to change the distance from camera to object.
+        float scrollInput = Input.GetAxis("Mouse ScrollWheel");
+        if (scrollInput != 0 && heldObject != null)
+        {
+            originalDistance += scrollInput * scrollSensitivity;
+        }
 
-            if (isThrowing)
-            {
-                originalDistance = 1f;
-            }
-            else
-            {
-                originalDistance += scrollInput * scrollSensitivity;
-            }
+        // Rotate the held object with Q and E keys.
+        if (heldObject != null)
+        {
+            float rotationInput = Input.GetAxis("Rotation");
+            heldObject.transform.Rotate(Vector3.forward, rotationInput * rotationSpeed * Time.deltaTime);
+        }
+
+        if (isThrowing)
+        {
+            originalDistance = 1f;
+        }
+        else
+        {
+            originalDistance += scrollInput * scrollSensitivity;
         }
 
         // Toggle the throwing state when pressing "F".
