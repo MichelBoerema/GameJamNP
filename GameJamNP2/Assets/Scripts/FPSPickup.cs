@@ -45,13 +45,26 @@ public class FPSPickup : MonoBehaviour
                 heldObject = null;
                 isThrowing = false;
             }
-
+            
             // If we're holding an object, move it smoothly with the mouse.
             if (heldObject != null)
             {
                 Vector3 targetPosition = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, originalDistance));
                 heldObject.transform.position = Vector3.SmoothDamp(heldObject.transform.position, targetPosition, ref smoothVelocity, 1.0f / smoothSpeed);
             }
+        }
+        if (controller.OnBox())
+        {
+            heldObject.freezeRotation = false;
+            heldObject.useGravity = true;
+            if (isThrowing)
+            {
+                heldObject.velocity = Vector3.zero; // Clear any existing velocity.
+                Vector3 throwDirection = (heldObject.transform.position - cam.transform.position).normalized;
+                heldObject.AddForce(throwDirection * 10.0f, ForceMode.Impulse); // Adjust the force for the throw.
+            }
+            heldObject = null;
+            isThrowing = false;
         }
        
         if (!controller.OnBox())

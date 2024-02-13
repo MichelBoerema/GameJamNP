@@ -119,7 +119,7 @@ public class FPSController : MonoBehaviour
      public bool OnBox()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 3))
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 2.5f))
         {
             if (hit.collider.CompareTag("Box"))
             {
