@@ -14,42 +14,45 @@ public class FPSPickup : MonoBehaviour
 
     void Update()
     {
-
-        if (Input.GetMouseButtonDown(1)) // Left mouse button pressed
+        if (!controller.OnBox())
         {
-            RaycastHit hit;
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Collide))
+            if (Input.GetMouseButtonDown(1)) // Left mouse button pressed
             {
-                if (hit.collider.CompareTag("Box"))
+                RaycastHit hit;
+                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Collide))
                 {
-                    heldObject = hit.collider.GetComponent<Rigidbody>();
-                    heldObject.useGravity = false;
-                    originalDistance = Vector3.Distance(cam.transform.position, heldObject.transform.position);
+                    if (hit.collider.CompareTag("Box"))
+                    {
+                        heldObject = hit.collider.GetComponent<Rigidbody>();
+                        heldObject.useGravity = false;
+                        originalDistance = Vector3.Distance(cam.transform.position, heldObject.transform.position);
+                    }
                 }
             }
-        }
-        else if (Input.GetMouseButtonUp(1) && heldObject != null) // Left mouse button released
-        {
-            heldObject.freezeRotation = false;
-            heldObject.useGravity = true;
-            if (isThrowing)
+            else if (Input.GetMouseButtonUp(1) && heldObject != null) // Left mouse button released
             {
-                heldObject.velocity = Vector3.zero; // Clear any existing velocity.
-                Vector3 throwDirection = (heldObject.transform.position - cam.transform.position).normalized;
-                heldObject.AddForce(throwDirection * 10.0f, ForceMode.Impulse); // Adjust the force for the throw.
+                heldObject.freezeRotation = false;
+                heldObject.useGravity = true;
+                if (isThrowing)
+                {
+                    heldObject.velocity = Vector3.zero; // Clear any existing velocity.
+                    Vector3 throwDirection = (heldObject.transform.position - cam.transform.position).normalized;
+                    heldObject.AddForce(throwDirection * 10.0f, ForceMode.Impulse); // Adjust the force for the throw.
+                }
+                heldObject = null;
+                isThrowing = false;
             }
-            heldObject = null;
-            isThrowing = false;
-        }
 
-        // If we're holding an object, move it smoothly with the mouse.
-        if (heldObject != null)
-        {
-            Vector3 targetPosition = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, originalDistance));
-            heldObject.transform.position = Vector3.SmoothDamp(heldObject.transform.position, targetPosition, ref smoothVelocity, 1.0f / smoothSpeed);
+            // If we're holding an object, move it smoothly with the mouse.
+            if (heldObject != null)
+            {
+                Vector3 targetPosition = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, originalDistance));
+                heldObject.transform.position = Vector3.SmoothDamp(heldObject.transform.position, targetPosition, ref smoothVelocity, 1.0f / smoothSpeed);
+            }
         }
+       
         if (!controller.OnBox())
         {
 

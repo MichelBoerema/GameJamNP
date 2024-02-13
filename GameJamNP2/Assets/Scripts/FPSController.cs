@@ -117,7 +117,7 @@ public class FPSController : MonoBehaviour
         }
     }
 
-   public bool OnBox()
+     public bool OnBox()
     {
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit, characterController.height / 2 + 0.1f))
