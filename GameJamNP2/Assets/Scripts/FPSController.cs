@@ -23,7 +23,6 @@ public class FPSController : MonoBehaviour
     public int Health;
     public TextMeshProUGUI text;
     public bool TakingDamage;
-
     CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
     float rotationX = 0;
@@ -52,7 +51,7 @@ public class FPSController : MonoBehaviour
             float movementDirectionY = moveDirection.y;
             moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
-            if (Input.GetButton("Jump") && canMove && characterController.isGrounded && !OnBox())
+            if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
             {
                 moveDirection.y = jumpSpeed;
             }
@@ -120,7 +119,7 @@ public class FPSController : MonoBehaviour
      public bool OnBox()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, characterController.height / 2 + 0.1f))
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 3))
         {
             if (hit.collider.CompareTag("Box"))
             {

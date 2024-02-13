@@ -53,15 +53,7 @@ public class FPSPickup : MonoBehaviour
                 heldObject.transform.position = Vector3.SmoothDamp(heldObject.transform.position, targetPosition, ref smoothVelocity, 1.0f / smoothSpeed);
             }
         }
-        if (heldObject == null && !controller.OnBox())
-        {
-            canJump = true;
-        }
-        else
-        {
-            canJump = false;
-        }
-
+       
         if (!controller.OnBox())
         {
 
