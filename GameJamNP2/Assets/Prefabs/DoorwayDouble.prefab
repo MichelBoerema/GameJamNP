@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3444365094095592935}
   - component: {fileID: 6151436797012610555}
   - component: {fileID: 1265471428941103612}
+  - component: {fileID: 968828214070058074}
   m_Layer: 0
   m_Name: DoorwayDouble
   m_TagString: Untagged
@@ -84,6 +85,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &968828214070058074
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977795428143399751}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300052, guid: a7cc7f41ce50a474aa1df610be0b810f, type: 3}
 --- !u!1 &2532657080930937157
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,6 +118,7 @@ GameObject:
   - component: {fileID: 3683518075053726637}
   - component: {fileID: 6816158078626844478}
   - component: {fileID: 8199289246771545095}
+  - component: {fileID: 2464551185884265902}
   m_Layer: 0
   m_Name: GateVisual2
   m_TagString: Untagged
@@ -167,6 +191,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2464551185884265902
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2532657080930937157}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300050, guid: a7cc7f41ce50a474aa1df610be0b810f, type: 3}
 --- !u!1 &8381453533881526065
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,6 +317,7 @@ GameObject:
   - component: {fileID: 7287982454518832824}
   - component: {fileID: 5228237075420258284}
   - component: {fileID: 3781101509148613091}
+  - component: {fileID: 5099748501678246800}
   m_Layer: 0
   m_Name: GateVisual1
   m_TagString: Untagged
@@ -343,3 +390,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5099748501678246800
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9213435657244763961}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300048, guid: a7cc7f41ce50a474aa1df610be0b810f, type: 3}
