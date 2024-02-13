@@ -15,7 +15,7 @@ public class FPSController : MonoBehaviour
     public float gravity = 20.0f;
     public Camera playerCamera;
     public float lookSpeed = 2.0f;
-    public float lookXLimit = 45.0f;
+    public float lookXLimit = 90f;
     public float normalHeight, crouchHeight;
     public float crouchSpeed = 3.5f;
     public bool IsCrouching = false;
