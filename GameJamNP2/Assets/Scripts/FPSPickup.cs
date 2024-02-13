@@ -11,6 +11,7 @@ public class FPSPickup : MonoBehaviour
     public float rotationSpeed = 10.0f; // Adjust this to control the rotation speed.
     public bool isThrowing = false; // Flag to track if the object is in throw state.
     public FPSController controller;
+    public bool canJump;
 
     void Update()
     {
@@ -52,7 +53,15 @@ public class FPSPickup : MonoBehaviour
                 heldObject.transform.position = Vector3.SmoothDamp(heldObject.transform.position, targetPosition, ref smoothVelocity, 1.0f / smoothSpeed);
             }
         }
-       
+        if (heldObject == null && !controller.OnBox())
+        {
+            canJump = true;
+        }
+        else
+        {
+            canJump = false;
+        }
+
         if (!controller.OnBox())
         {
 
