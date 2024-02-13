@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7156254947876376464}
   - component: {fileID: 7265403097688403598}
   - component: {fileID: 4643601246203561002}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,8 +54,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.6, y: 0.6, z: 0.6}
-  m_Center: {x: 0, y: 0.24342051, z: 0}
+  m_Size: {x: 0.6, y: 0.3250984, z: 0.6}
+  m_Center: {x: 0, y: 0.10596973, z: 0}
 --- !u!114 &4643601246203561002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,6 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2248565258309446450}
   Actife: 0
+  objects: []
   onActivation:
     m_PersistentCalls:
       m_Calls:
@@ -163,7 +164,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e08b07d519c228643b8f67b410b90980, type: 2}
+  - {fileID: 2100000, guid: 5c461fd6993badf4081c5bdea1f83655, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -289,7 +290,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: aa9ed8c45dd768d4db00aab42ebdf96e, type: 2}
+  - {fileID: 2100000, guid: ec85b7686b9145242a58ba9eab43a70b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
