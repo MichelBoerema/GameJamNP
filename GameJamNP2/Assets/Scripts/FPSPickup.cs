@@ -53,7 +53,7 @@ public class FPSPickup : MonoBehaviour
                 heldObject.transform.position = Vector3.SmoothDamp(heldObject.transform.position, targetPosition, ref smoothVelocity, 1.0f / smoothSpeed);
             }
         }
-        if (controller.OnBox())
+        if (controller.OnBox() && heldObject != null)
         {
             heldObject.freezeRotation = false;
             heldObject.useGravity = true;
