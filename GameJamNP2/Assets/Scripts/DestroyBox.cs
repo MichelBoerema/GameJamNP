@@ -7,10 +7,7 @@ public class DestroyBox : MonoBehaviour
 {
     private RaycastHit _Hit;
     private bool inRangeOfBox = false;
-    void Start()
-    {
 
-    }
     void Update()
     {
         if (inRangeOfBox)
