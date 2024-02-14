@@ -39,4 +39,13 @@ public class Door : MonoBehaviour
             inRange = false;
         }
     }
+
+    public void OpenDoor()
+    {
+        animator.SetBool("isOpen", true);
+    }
+    public void CloseDoor()
+    {
+        animator.SetBool("isOpen", false);
+    }
 }
