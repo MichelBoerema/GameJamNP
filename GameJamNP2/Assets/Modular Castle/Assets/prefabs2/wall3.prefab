@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 457682}
   - component: {fileID: 3362754}
   - component: {fileID: 2310544}
-  - component: {fileID: 6817684689875438577}
+  - component: {fileID: 5054213542724750341}
   m_Layer: 0
   m_Name: wall3
   m_TagString: Untagged
@@ -85,7 +85,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6817684689875438577
+--- !u!65 &5054213542724750341
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
