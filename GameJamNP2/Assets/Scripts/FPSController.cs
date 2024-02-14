@@ -89,11 +89,11 @@ public class FPSController : MonoBehaviour
             this.GetComponentInChildren<Transform>().localScale = new Vector3(1, crouchHeight, 1);
         }
 
-        if (Input.GetKeyDown(KeyCode.C)) //Crouch Controller
+        if (Input.GetKeyDown(KeyCode.LeftControl)) //Crouch Controller
         {
             IsCrouching = true;
         }
-        if (Input.GetKeyUp(KeyCode.C))
+        if (Input.GetKeyUp(KeyCode.LeftControl))
         {
             IsCrouching = false;
         }
