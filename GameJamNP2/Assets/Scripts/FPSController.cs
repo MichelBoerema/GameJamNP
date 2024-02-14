@@ -29,7 +29,10 @@ public class FPSController : MonoBehaviour
 
     [HideInInspector]
     public bool canMove = true;
-
+    void Awake()
+    {
+        DontDestroyOnLoad(transform.gameObject);
+    }
     void Start()
     {
         characterController = GetComponent<CharacterController>();
