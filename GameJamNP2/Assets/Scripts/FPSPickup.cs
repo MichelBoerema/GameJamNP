@@ -15,6 +15,10 @@ public class FPSPickup : MonoBehaviour
 
     void Update()
     {
+        if (originalDistance > 5)
+        {
+            originalDistance = 5;
+        }
         if (!controller.OnBox())
         {
             if (Input.GetMouseButtonDown(1)) // Left mouse button pressed
@@ -27,6 +31,7 @@ public class FPSPickup : MonoBehaviour
                     if (hit.collider.CompareTag("Box"))
                     {
                         heldObject = hit.collider.GetComponent<Rigidbody>();
+                        heldObject.freezeRotation = true;
                         heldObject.useGravity = false;
                         originalDistance = Vector3.Distance(cam.transform.position, heldObject.transform.position);
                     }
