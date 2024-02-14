@@ -15,6 +15,10 @@ public class FPSPickup : MonoBehaviour
 
     void Update()
     {
+        if (originalDistance > 5)
+        {
+            originalDistance = 5;
+        }
         if (!controller.OnBox())
         {
             if (Input.GetMouseButtonDown(1)) // Left mouse button pressed
