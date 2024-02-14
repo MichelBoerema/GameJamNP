@@ -15,7 +15,7 @@ public class FPSController : MonoBehaviour
     public float gravity = 20.0f;
     public Camera playerCamera;
     public float lookSpeed = 2.0f;
-    public float lookXLimit = 45.0f;
+    public float lookXLimit = 90f;
     public float normalHeight, crouchHeight;
     public float crouchSpeed = 3.5f;
     public bool IsCrouching = false;
@@ -23,7 +23,6 @@ public class FPSController : MonoBehaviour
     public int Health;
     public TextMeshProUGUI text;
     public bool TakingDamage;
-
     CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
     float rotationX = 0;
@@ -42,7 +41,7 @@ public class FPSController : MonoBehaviour
     void Update()
     {
         text.SetText(Health.ToString());
-        if (!IsCrouching) //Is currenly NOT crouching
+        if (!IsCrouching) //Is currently NOT crouching
         {
             Vector3 forward = transform.TransformDirection(Vector3.forward);
             Vector3 right = transform.TransformDirection(Vector3.right);
@@ -51,7 +50,7 @@ public class FPSController : MonoBehaviour
             float curSpeedY = canMove ? (isRunning ? runningSpeed : walkingSpeed) * Input.GetAxis("Horizontal") : 0;
             float movementDirectionY = moveDirection.y;
             moveDirection = (forward * curSpeedX) + (right * curSpeedY);
-        
+
             if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
             {
                 moveDirection.y = jumpSpeed;
@@ -63,10 +62,8 @@ public class FPSController : MonoBehaviour
             this.GetComponent<CapsuleCollider>().height = 1;
             characterController.height = 2f;
             this.GetComponentInChildren<Transform>().localScale = new Vector3(1, 1, 1);
-           // Debug.Log(this.transform.position);
-            //this.transform.position = new Vector3(10,10,10);
-            //Debug.Log(this.transform.position);
-        }else   //IS currenly crouching
+        }
+        else   //IS currently crouching
         {
             Vector3 forward = transform.TransformDirection(Vector3.forward);
             Vector3 right = transform.TransformDirection(Vector3.right);
@@ -85,21 +82,18 @@ public class FPSController : MonoBehaviour
             }
 
             this.GetComponent<CapsuleCollider>().height = crouchHeight;
-            characterController.height = crouchHeight*2;
+            characterController.height = crouchHeight * 2;
             this.GetComponentInChildren<Transform>().localScale = new Vector3(1, crouchHeight, 1);
         }
 
-
-        if(Input.GetKeyDown(KeyCode.C)) //Crouch Controller
+        if (Input.GetKeyDown(KeyCode.C)) //Crouch Controller
         {
-            //PlayerHeight.height = crouchHeight;
-            IsCrouching =  true;
+            IsCrouching = true;
         }
-        if(Input.GetKeyUp(KeyCode.C)) 
+        if (Input.GetKeyUp(KeyCode.C))
         {
-            //PlayerHeight.height = normalHeight;
             IsCrouching = false;
-        } 
+        }
 
         // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
         // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
@@ -120,9 +114,42 @@ public class FPSController : MonoBehaviour
             playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
         }
-          
-        
     }
+
+    public bool OnBox()
+    {
+        int horizontalRays = 3; // Adjust the number of horizontal rays as needed
+        int verticalRays = 3; // Adjust the number of vertical rays as needed
+        float horizontalSpreadAngle = 69f; // Adjust the horizontal spread angle as needed
+        float verticalSpreadAngle = 69f; // Adjust the vertical spread angle as needed
+        float maxDistance = 2.5f; // Maximum distance to check for collision
+
+        for (int i = 0; i < horizontalRays; i++)
+        {
+            for (int j = 0; j < verticalRays; j++)
+            {
+                // Calculate the direction of the ray with a spread in both horizontal and vertical directions
+                Vector3 direction = Quaternion.AngleAxis(i * horizontalSpreadAngle / (horizontalRays - 1) - horizontalSpreadAngle / 2f, Vector3.up) *
+                                    Quaternion.AngleAxis(j * verticalSpreadAngle / (verticalRays - 1) - verticalSpreadAngle / 2f, Vector3.right) *
+                                    Vector3.down;
+
+                Debug.DrawRay(transform.position, direction * maxDistance, Color.blue); // Draw the ray
+
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, direction, out hit, maxDistance))
+                {
+                    if (hit.collider.CompareTag("Box"))
+                    {
+                        return true; // If any ray hits the box, return true
+                    }
+                }
+            }
+        }
+
+        return false; // If no ray hits the box, return false
+    }
+
+
     IEnumerator CallFunctionRepeatedly()
     {
         while (TakingDamage)
@@ -132,17 +159,17 @@ public class FPSController : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damageAmmount)
+    public void TakeDamage(int damageAmount)
     {
-        if(Health > 0)
+        if (Health > 0)
         {
-            Health -= damageAmmount;
+            Health -= damageAmount;
         }
     }
 
-    public void GainHealth(int healthAmmount)
+    public void GainHealth(int healthAmount)
     {
-        Health += healthAmmount;
+        Health += healthAmount;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -162,4 +189,3 @@ public class FPSController : MonoBehaviour
         }
     }
 }
-
