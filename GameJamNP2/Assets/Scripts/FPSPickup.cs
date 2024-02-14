@@ -27,6 +27,7 @@ public class FPSPickup : MonoBehaviour
                     if (hit.collider.CompareTag("Box"))
                     {
                         heldObject = hit.collider.GetComponent<Rigidbody>();
+                        heldObject.freezeRotation = true;
                         heldObject.useGravity = false;
                         originalDistance = Vector3.Distance(cam.transform.position, heldObject.transform.position);
                     }
