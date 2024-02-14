@@ -274,7 +274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkingSpeed: 7.5
-  runningSpeed: 11.5
+  runningSpeed: 8.2
   jumpSpeed: 8
   gravity: 20
   playerCamera: {fileID: 3354565067657047268}
@@ -520,7 +520,7 @@ MonoBehaviour:
   rotationSpeed: 50
   isThrowing: 0
   controller: {fileID: 3354565066777992924}
-  canJump: 0
+  canJump: 1
 --- !u!114 &594966689785643
 MonoBehaviour:
   m_ObjectHideFlags: 0
