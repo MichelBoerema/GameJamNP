@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.Events; // Import UnityEvents
 
@@ -15,7 +16,7 @@ public class WeightButton : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name != "Tortch" || other.gameObject.name != "Arm")
+        if(other.gameObject.CompareTag("DragonBox") || other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Box"))
         {
             objects.Add(other.gameObject);
         }
