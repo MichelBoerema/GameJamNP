@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
-
 public class FPSController : MonoBehaviour
 {
     public float walkingSpeed = 7.5f;
@@ -27,6 +27,7 @@ public class FPSController : MonoBehaviour
     Vector3 moveDirection = Vector3.zero;
     public Animator animator;
     float rotationX = 0;
+    private string currentscnene;
 
     [HideInInspector]
     public bool canMove = true;
@@ -40,6 +41,11 @@ public class FPSController : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            currentscnene = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene(currentscnene);
+        }
         text.SetText(Health.ToString());
         if (Health <= 0)
         {
@@ -89,6 +95,12 @@ public class FPSController : MonoBehaviour
             this.GetComponent<CapsuleCollider>().height = crouchHeight;
             characterController.height = crouchHeight * 2;
             this.GetComponentInChildren<Transform>().localScale = new Vector3(1, crouchHeight, 1);
+
+            // Check for collision above the player before allowing uncrouch
+            if (Physics.Raycast(transform.position, Vector3.up, crouchHeight, ~LayerMask.GetMask("Player")))
+            {
+                IsCrouching = true; // If there's something above, keep crouching
+            }
         }
         if (!characterController.isGrounded)
         {
@@ -112,21 +124,23 @@ public class FPSController : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.LeftControl))
         {
-            IsCrouching = false;
+            // Check for collision above the player before allowing uncrouch
+            if (!Physics.Raycast(transform.position, Vector3.up, crouchHeight, ~LayerMask.GetMask("Player")))
+            {
+                IsCrouching = false; // Only uncrouch if there's nothing above
+            }
         }
 
         // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
         // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
         // as an acceleration (ms^-2)
 
-    } 
- 
-  
+    }
 
     public bool OnBox()
     {
-        int horizontalRays = 2; // Adjust the number of horizontal rays as needed
-        int verticalRays = 2; // Adjust the number of vertical rays as needed
+        int horizontalRays = 1; // Adjust the number of horizontal rays as needed
+        int verticalRays = 1; // Adjust the number of vertical rays as needed
         float horizontalSpreadAngle = 69f; // Adjust the horizontal spread angle as needed
         float verticalSpreadAngle = 69f; // Adjust the vertical spread angle as needed
         float maxDistance = 2.5f; // Maximum distance to check for collision
@@ -155,7 +169,6 @@ public class FPSController : MonoBehaviour
 
         return false; // If no ray hits the box, return false
     }
-
 
     IEnumerator CallFunctionRepeatedly()
     {
