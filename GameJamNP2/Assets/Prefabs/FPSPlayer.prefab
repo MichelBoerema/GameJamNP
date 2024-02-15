@@ -753,7 +753,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 8481815150119248687}
   audios: {fileID: 6808460129101890741}
-  punch: {fileID: 8300000, guid: d77daf80a74921441bae9fdc0223ba48, type: 3}
+  punch: {fileID: 8300000, guid: 215c2ebe7997aa84a9cf944b381fee41, type: 3}
   Wall: {fileID: 8300000, guid: 26ba1fc93698e5d4d878f46d79ce3649, type: 3}
   Pipe: {fileID: 8300000, guid: 5072f3c18b7d8594f8d0a13853a12483, type: 3}
 --- !u!82 &6808460129101890741
