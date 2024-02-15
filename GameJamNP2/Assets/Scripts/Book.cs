@@ -2,11 +2,18 @@ using UnityEngine;
 
 public class PageController : MonoBehaviour
 {
+    public GameObject healthCanvas;
+
     public GameObject[] pages;
     private int currentPageIndex = 0;
 
     void Update()
     {
+        if(gameObject.activeSelf)
+        {
+            healthCanvas.SetActive(false);
+        }
+
         // Check for arrow key input
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
@@ -49,6 +56,7 @@ public class PageController : MonoBehaviour
 
     void DisableCanvas()
     {
+        healthCanvas.SetActive(true);
         // Perform any action needed to disable the canvas
         // For example, you can disable the GameObject that holds the canvas
         gameObject.SetActive(false);
