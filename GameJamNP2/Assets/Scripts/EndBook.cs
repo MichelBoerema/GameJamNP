@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Book : MonoBehaviour
+public class EndBook : MonoBehaviour
 {
     public GameObject healthCanvas;
 
@@ -56,9 +56,6 @@ public class Book : MonoBehaviour
 
     void DisableCanvas()
     {
-        healthCanvas.SetActive(true);
-        // Perform any action needed to disable the canvas
-        // For example, you can disable the GameObject that holds the canvas
-        gameObject.SetActive(false);
+        Application.Quit();
     }
 }
