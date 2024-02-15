@@ -9,8 +9,7 @@ public class DragonScript : MonoBehaviour
     [SerializeField] AudioSource idleAgrassiveAudioSource;
     [SerializeField] AudioSource takeOffAudioSource;
 
-    public float timer = 3f;
-    //float timert2 = 3f;
+    public float timer = 6f;
     [SerializeField] ParticleSystem dragonFire;
     [SerializeField] GameObject damageCollider;
     void Start()
@@ -22,22 +21,29 @@ public class DragonScript : MonoBehaviour
     void Update()
     {
         timer -= Time.deltaTime;
-        if(timer <= 4 )
-        {
-            damageCollider.GetComponent<CapsuleCollider>().enabled = false;
-        }
-        if(timer <= 3)
+        //flam aan en collider 1 sec later
+        if (timer <= 10)
         {
             dragonFire.Play();
         }
-        if(timer <= 2)
+        if (timer <= 9)
         {
             damageCollider.GetComponent<CapsuleCollider>().enabled = true;
         }
-        if(timer <=0)
+
+        //flam uit en collider later
+        if (timer <= 7f)
         {
             dragonFire.Stop();
-            timer = 6f;
+        }
+        if (timer <= 6)
+        {
+            damageCollider.GetComponent<CapsuleCollider>().enabled = false;
+        }
+        //reset timer
+        if(timer <=0)
+        {
+            timer = 10f;
         }
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Drakaris"))
         {
