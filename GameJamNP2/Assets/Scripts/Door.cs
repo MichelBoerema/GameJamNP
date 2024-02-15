@@ -8,6 +8,8 @@ public class Door : MonoBehaviour
     public bool isOpenn = false;
     public bool inRange = false;
 
+    [SerializeField] AudioSource openDoor;
+    [SerializeField] AudioSource closeDoor;
     void Update()
     {
         if (inRange)
@@ -38,5 +40,16 @@ public class Door : MonoBehaviour
         {
             inRange = false;
         }
+    }
+
+    public void OpenDoor()
+    {
+        openDoor.Play();
+        animator.SetBool("isOpen", true);
+    }
+    public void CloseDoor()
+    {
+        closeDoor.Play();
+        animator.SetBool("isOpen", false);
     }
 }
