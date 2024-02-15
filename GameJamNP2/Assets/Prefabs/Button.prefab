@@ -71,6 +71,9 @@ MonoBehaviour:
   animator: {fileID: 2248565258309446450}
   Actife: 0
   objects: []
+  ignore:
+    serializedVersion: 2
+    m_Bits: 4
   onActivation:
     m_PersistentCalls:
       m_Calls:

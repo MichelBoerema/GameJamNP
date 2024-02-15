@@ -15,7 +15,8 @@ public class WeightButton : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name != "Tortch" || other.gameObject.name != "Arm")
+        
+        if(other.gameObject.CompareTag("Box") || other.gameObject.CompareTag("Player"))
         {
             objects.Add(other.gameObject);
         }
@@ -29,7 +30,10 @@ public class WeightButton : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        objects.Remove(other.gameObject);
+        if (other.gameObject.CompareTag("Box") || other.gameObject.CompareTag("Player"))
+        {
+            objects.Remove(other.gameObject);
+        }
     }
     private void Update()
     {
