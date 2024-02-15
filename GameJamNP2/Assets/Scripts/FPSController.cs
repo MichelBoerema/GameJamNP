@@ -125,8 +125,8 @@ public class FPSController : MonoBehaviour
 
     public bool OnBox()
     {
-        int horizontalRays = 3; // Adjust the number of horizontal rays as needed
-        int verticalRays = 3; // Adjust the number of vertical rays as needed
+        int horizontalRays = 2; // Adjust the number of horizontal rays as needed
+        int verticalRays = 2; // Adjust the number of vertical rays as needed
         float horizontalSpreadAngle = 69f; // Adjust the horizontal spread angle as needed
         float verticalSpreadAngle = 69f; // Adjust the vertical spread angle as needed
         float maxDistance = 2.5f; // Maximum distance to check for collision
@@ -161,7 +161,8 @@ public class FPSController : MonoBehaviour
     {
         while (TakingDamage)
         {
-            TakeDamage(10);
+            TakeDamage(50);
+            TakeDamage(50);
             yield return new WaitForSeconds(1f);
         }
     }
