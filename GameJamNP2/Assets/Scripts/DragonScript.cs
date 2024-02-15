@@ -5,6 +5,9 @@ using UnityEngine;
 public class DragonScript : MonoBehaviour
 {
     public Animator animator;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioSource idleAgrassiveAudioSource;
+    [SerializeField] AudioSource takeOffAudioSource;
     void Start()
     {
         animator = gameObject.GetComponent<Animator>();
@@ -24,6 +27,7 @@ public class DragonScript : MonoBehaviour
     {
         animator.SetBool("IdleAgressive", false);
         animator.SetBool("Drakaris", true);
+        
     }
     void OnCollisionEnter(Collision other)
     {
@@ -31,5 +35,21 @@ public class DragonScript : MonoBehaviour
         { 
             AnimateDamage();
         }
+    }
+    public void PlayDamageAudio()
+    {
+        idleAgrassiveAudioSource.Stop();
+        audioSource.Play();
+    }
+    public void PlayTakeOffAudio()
+    {
+        idleAgrassiveAudioSource.Stop();
+        audioSource.Stop();
+        takeOffAudioSource.Play();
+    }
+    public void PlayIdleAudio()
+    {
+        audioSource.Stop();
+        idleAgrassiveAudioSource.Play();
     }
 }

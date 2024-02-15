@@ -18,6 +18,9 @@ public class BossLevel : MonoBehaviour
     private float timer = 2f;
     private bool timerIsActive = false;
     [SerializeField] private GameObject dragonCollider;
+
+    [SerializeField] private AudioSource secondAttackSource;
+
     void Update()
     {
 
@@ -50,6 +53,7 @@ public class BossLevel : MonoBehaviour
     {
         if (secondFunctionIsCalled)
         {
+            secondAttackSource.Play();
             fuctionsCalled++;
             secondFunctionIsCalled = false;
         }
