@@ -9811,6 +9811,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BookCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8460737851614048035, guid: e44bb095071faa74f96576355b39d883,
+        type: 3}
+      propertyPath: healthCanvas
+      value: 
+      objectReference: {fileID: 2000258242}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -38800,6 +38805,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 448002, guid: 64cb684f38ab4e547a77225cd823cf62,
     type: 3}
   m_PrefabInstance: {fileID: 223733878}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2000258242 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1035952031714683508, guid: 6233b9ce12b754543bbcf2e62c1edf1f,
+    type: 3}
+  m_PrefabInstance: {fileID: 106699816}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2003058992
 PrefabInstance:
