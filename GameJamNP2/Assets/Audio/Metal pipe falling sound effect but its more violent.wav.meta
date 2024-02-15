@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:GameJamNP2/Assets/Audio/DoorOpening.wav.meta
+guid: 5072f3c18b7d8594f8d0a13853a12483
+========
 guid: d2b08ff29100b5142a88e11bc88e3511
+>>>>>>>> main:GameJamNP2/Assets/Audio/Metal pipe falling sound effect but its more violent.wav.meta
 AudioImporter:
   externalObjects: {}
   serializedVersion: 7
