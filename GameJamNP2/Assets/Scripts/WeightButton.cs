@@ -15,7 +15,15 @@ public class WeightButton : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        objects.Add(other.gameObject);
+        if(other.gameObject.name != "Tortch")
+        {
+            objects.Add(other.gameObject);
+        }
+        else
+        {
+            Debug.Log("Cant use this item");
+        }
+
 
     }
 
