@@ -28,6 +28,8 @@ public class FPSController : MonoBehaviour
     public Animator animator;
     float rotationX = 0;
     private string currentscnene;
+    public AudioSource DeathSound;
+    private bool deathSoundPlayed;
 
     [HideInInspector]
     public bool canMove = true;
@@ -49,6 +51,7 @@ public class FPSController : MonoBehaviour
         text.SetText(Health.ToString());
         if (Health <= 0)
         {
+            PlayAudio();
             canMove = false;
             animator.SetBool("Dead", true);
         }
@@ -136,14 +139,23 @@ public class FPSController : MonoBehaviour
         // as an acceleration (ms^-2)
 
     }
+    void PlayAudio()
+    {
 
+        if(deathSoundPlayed == false)
+        {
+            DeathSound.Play();
+            deathSoundPlayed = true;
+        }
+       
+    }
     public bool OnBox()
     {
-        int horizontalRays = 1; // Adjust the number of horizontal rays as needed
-        int verticalRays = 1; // Adjust the number of vertical rays as needed
+        int horizontalRays = 5; // Adjust the number of horizontal rays as needed
+        int verticalRays = 5; // Adjust the number of vertical rays as needed
         float horizontalSpreadAngle = 69f; // Adjust the horizontal spread angle as needed
         float verticalSpreadAngle = 69f; // Adjust the vertical spread angle as needed
-        float maxDistance = 2.5f; // Maximum distance to check for collision
+        float maxDistance = .8f; // Maximum distance to check for collision
 
         for (int i = 0; i < horizontalRays; i++)
         {
