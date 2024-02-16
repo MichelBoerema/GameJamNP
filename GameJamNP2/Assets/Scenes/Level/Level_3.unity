@@ -14330,6 +14330,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tortch
       objectReference: {fileID: 0}
+    - target: {fileID: 1573444746880367193, guid: 0b5343b4d7cc1d5438a160efc8cae26f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Tortch
+      objectReference: {fileID: 0}
     - target: {fileID: 4129957280835045020, guid: 0b5343b4d7cc1d5438a160efc8cae26f,
         type: 3}
       propertyPath: m_LocalScale.x

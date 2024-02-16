@@ -11,7 +11,7 @@ public class DragonScript : MonoBehaviour
 
     public float timer = 6f;
     [SerializeField] ParticleSystem dragonFire;
-    [SerializeField] GameObject damageCollider;
+    [SerializeField] CapsuleCollider damageCollider;
     void Start()
     {
         animator = gameObject.GetComponent<Animator>();
@@ -20,30 +20,22 @@ public class DragonScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime;
-        //flam aan en collider 1 sec later
-        if (timer <= 10)
+       timer -= Time.deltaTime;
+        if(timer <= 10 )
         {
+            damageCollider.enabled = true;
             dragonFire.Play();
         }
-        if (timer <= 9)
-        {
-            damageCollider.GetComponent<CapsuleCollider>().enabled = true;
-        }
-
-        //flam uit en collider later
-        if (timer <= 7f)
+        if( timer <= 5)
         {
             dragonFire.Stop();
+            damageCollider.enabled = false;
         }
-        if (timer <= 6)
-        {
-            damageCollider.GetComponent<CapsuleCollider>().enabled = false;
-        }
-        //reset timer
-        if(timer <=0)
+
+        if(timer <= 0 && dragonFire.isStopped)
         {
             timer = 10f;
+
         }
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Drakaris"))
         {

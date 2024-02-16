@@ -8,7 +8,12 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject levelMenu;
-    
+
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
     public void PlayGame()
     {
         mainMenu.SetActive(false);
@@ -37,6 +42,6 @@ public class MainMenu : MonoBehaviour
     }
     public void QuitGame()
     {
-        Environment.Exit(0);
+        Application.Quit();
     }
 }

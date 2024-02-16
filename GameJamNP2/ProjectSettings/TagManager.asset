@@ -10,6 +10,8 @@ TagManager:
   - DragonBox
   - Dragon
   - DamagePillar
+  - Arm
+  - Tortch
   layers:
   - Default
   - TransparentFX

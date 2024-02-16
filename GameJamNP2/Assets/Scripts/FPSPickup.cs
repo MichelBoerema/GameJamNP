@@ -28,7 +28,7 @@ public class FPSPickup : MonoBehaviour
 
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Collide))
                 {
-                    if (hit.collider.CompareTag("Box") || (hit.collider.CompareTag("DragonBox")))
+                    if (hit.collider.CompareTag("Box") || hit.collider.CompareTag("DragonBox") || hit.collider.CompareTag("Tortch"))
                     {
                         heldObject = hit.collider.GetComponent<Rigidbody>();
                         heldObject.freezeRotation = true;
